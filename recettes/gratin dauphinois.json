@@ -1,0 +1,28 @@
+{
+	"categories": [
+		"Gratin",
+		"Pommes de terre"
+	],
+	"name": "Gratin Dauphinois",
+	"person": 7,
+	"difficulty": "facile",
+	"preparationTime": "20 minutes",
+	"cookingTime": "Une heure",
+	"totalTime": "Une heure et 20 minutes",
+	"ingredients": [
+		"2 kilos de pomme de terre",
+		"Une gousse d'ail",
+		"35 centilitres de crème liquide",
+		"35 centilitres de lait"
+	],
+	"steps": {
+		"1": "Éplucher les pommes de terre et les couper en fines lamelles. Les laver à l'eau afin de retirer l'amidon et les sécher autant que possible.",
+		"2": "Préchauffer le four à 180 degrés celsius. Mettre de l'ail écrasé au fond du plat à gratin. Puis les lamelles de pomme de terre.",
+		"3": "Mélanger la crème et le lait et recouvrir les pommes de terre. Saler et poivrer.",
+		"4": {
+			"text": "Mettre au four pendant 60 minutes.",
+			"timer": 3600,
+			"textAfterTimer": "Il est temps de sortir le gratin du four!"
+		}
+	}
+}

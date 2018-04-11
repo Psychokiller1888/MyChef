@@ -1,0 +1,66 @@
+{
+  "name" : "Mon Chef de cuisine",
+  "intents" : [ {
+    "id" : "Psychokiller1888:repeterEtape",
+    "type" : "registry",
+    "version" : "0.0.6",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "repeterEtape"
+  }, {
+    "id" : "Psychokiller1888:ouvrirRecette",
+    "type" : "registry",
+    "version" : "0.0.22",
+    "language" : "fr",
+    "slots" : [ {
+      "name" : "recette",
+      "id" : "Bkb-apNif",
+      "entity" : "",
+      "entityId" : "entity_XrXemA8x1P4M",
+      "missingQuestion" : "Quelle recette dois-je ouvrir?",
+      "required" : true
+    } ],
+    "name" : "ouvrirRecette"
+  }, {
+    "id" : "Psychokiller1888:etapeSuivante",
+    "type" : "registry",
+    "version" : "0.0.4",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "etapeSuivante"
+  }, {
+    "id" : "Psychokiller1888:ingredients",
+    "type" : "registry",
+    "version" : "0.0.5",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "ingredients"
+  }, {
+    "id" : "Psychokiller1888:etapePrecedente",
+    "type" : "registry",
+    "version" : "0.0.7",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "etapePrecedente"
+  }, {
+    "id" : "Psychokiller1888:activerMinuteur",
+    "type" : "registry",
+    "version" : "0.0.6",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "activerMinuteur"
+  } ],
+  "createdAt" : "2018-04-06T10:29:04.093Z",
+  "language" : "fr",
+  "nluEngine" : {
+    "version" : "0.13.0"
+  },
+  "platform" : {
+    "type" : "raspberrypi"
+  },
+  "asr" : {
+    "type" : "snips"
+  },
+  "analyticsEnabled" : true,
+  "hotword" : "hey_snips"
+}

@@ -1,0 +1,43 @@
+{
+	"categories": [
+		"Viandes",
+		"Boeuf"
+	],
+	"name": "Hachis Parmentier",
+	"person": 6,
+	"difficulty": "facile",
+	"preparationTime": "10 minutes",
+	"cookingTime": "une heure",
+	"totalTime": "une heure et 10 minutes",
+	"ingredients": [
+		"1 kilo de pommes de terre",
+		"20 centilitre de lait",
+		"une cuillère à soupe de crème",
+		"50 grammes de beurre",
+		"muscade",
+		"100 grammes de gruyère râpé",
+		"500 grammes de boeuf haché",
+		"un oignon",
+		"une échalote",
+		"2 gousses d'ail",
+		"une carotte",
+		"25 grammes de beurre",
+		"sel et poivre"
+	],
+	"steps": {
+		"1": "Hacher l'oignon, l'ail et l’échalote. Éplucher et couper la carotte en brunoise très fine. Éplucher les pommes de terre et les couper en petits morceaux.",
+		"2": {
+			"text": "Faire cuire les pommes de terre à l'eau salée environ 30 minutes.",
+			"timer": 1800,
+			"textAfterTimer": "Retirer les pommes de terre du feu"
+		},
+		"3": "Faire revenir 1 minute les carottes dans le beurre puis ajouter l'oignon, l'ail et l’échalote. Laisser encore 1 minute.",
+		"4": "Rajouter la viande. Saler poivrer et laisser cuire 10 minutes en remuant.",
+		"5": "Passer les pommes de terre au moulin à légumes ou au presse purée et y ajouter le beurre, le lait, la crème et bien saler. Mélanger rapidement.",
+		"6": {
+			"text": "Disposer la viande dans un plat à gratin et recouvrir de purée. Terminer avec le fromage râpé. Passer au four très chaud 10 minutes et 2 minutes sous le gril pour bien gratiner.",
+			"timer": "600",
+			"textAfterTimer": "Passer maintenant environ 2 minutes sous le grill pour bien gratiner votre hachis Parmentier"
+		}
+	}
+}

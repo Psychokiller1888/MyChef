@@ -1,0 +1,38 @@
+{
+	"categories": [
+		"Soufflé"
+	],
+	"name": "Soufflé au fromage",
+	"person": 4,
+	"difficulty": "facile",
+	"preparationTime": "50 minutes",
+	"cookingTime": "25 minutes",
+	"totalTime": "une heure et 15 minutes",
+	"ingredients": [
+		"25 grammes de beurre",
+		"2 cuillères à soupe de farine",
+		"20 centilitres de lait",
+		"20 centilitres d'eau",
+		"40 grammes de gruyère ou de comté",
+		"3 oeufs + 1 jaune d'oeuf",
+		"noix de muscade",
+		"sel et poivre"
+	],
+	"steps": {
+		"1": "Faire fondre le beurre à feu doux dans une casserole. Ajouter la farine et remuer avec une cuillère en bois.",
+		"2": "Lorsque le mélange commence à mousser et sans lui laisser prendre de couleur, délayer avec le lait chaud additionné d'eau.",
+		"3": {
+			"text": "Laisser cuire 5 à 6 minutes en continuant de remuer.",
+			"timer": 330,
+			"textAfterTimer": "Oter du feu et ajouter une pincée de sel."
+		},
+		"4": "Préchauffez le four à 180°C. Séparer les blanc des jaunes (3 blancs et 4 jaunes).",
+		"5": "Battre les blancs en neige très ferme au batteur. Incorporer les jaunes légèrement battus. Ajouter le fromage râpé.",
+		"6": "Saler, poivrer et incorporer une pincée de noix de muscade. Avec précaution, en les soulevant à la spatule, ajouter les blancs en neige à cette préparation.",
+		"7": {
+			"text": "Beurrer un moule à soufflé et le remplir au 3 quart. Mettre au four en position basse. Laisser cuire 20 minutes.",
+			"timer": 1200,
+			"textAfterTimer": "Il est temps de sortir les soufflés du four! Vous devez les servir immédiatement sinon ils retomberont!"
+		}
+	}
+}
