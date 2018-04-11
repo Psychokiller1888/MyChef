@@ -1,6 +1,6 @@
-# MyChef - FR (for english, check below)
+# MyChef
 
-## Snips - Assistant de cuisine
+## Snips - Assistant de cuisine (for english, check below)
 
 Ce project est ma petite contribution en remerciement pour le starter Kit que j'ai reçu de Snips.
 
