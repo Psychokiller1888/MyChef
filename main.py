@@ -89,7 +89,7 @@ def onMessage(client, userData, message):
 				currentStep = 0
 
 		if os.path.isfile('./recettes/{}.json'.format(slotRecipeName.lower())):
-			endTalk(sessionId, text="Ok, j'ouvre la recette {}, un instant".format(payload['slots'][0]['rawValue']))
+			endTalk(sessionId, text=u"Ok, j'ouvre la recette {}, un instant".format(payload['slots'][0]['rawValue']))
 			currentStep = 0
 
 			file = codecs.open('./recettes/{}.json'.format(slotRecipeName.lower()), 'r', encoding='utf-8')
