@@ -31,7 +31,7 @@ As every respectable project, a TODO:
 
 - Multilang support
 - Adding ingredients directly to an accessible list
-- Support intelligent kitch devices (ex. pre heating oven)
+- Support intelligent kitchen devices (ex. pre heating oven)
 
 
 ### Installation
