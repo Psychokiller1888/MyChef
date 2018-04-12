@@ -8,7 +8,7 @@ Une fois installé cet assistant vous permettra d'avoir votre propre livre de re
 
 Une série de vidéo est dédié à ce project: (url playlist)
 
-La vidéo concernant la programmation est ici: (url video)
+La vidéo concernant la programmation est ici: [Youtube partie 4](https://www.youtube.com/watch?v=V6pvFjn0Vt0)
 
 Comme tout project qui se respecte, une TODO list est prévue:
 
@@ -25,7 +25,7 @@ Once installed, this assistant will offer you the power of an interactive recipe
 
 A serie of (french, EN subtitles to come) video dedicated to the project can be found here: (url playlist)
 
-The video treating about this program is to be found here: (url video)
+The video treating about this program is to be found here: [Youtube part 4](https://www.youtube.com/watch?v=V6pvFjn0Vt0)
 
 As every respectable project, a TODO:
 
