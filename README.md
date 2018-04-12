@@ -6,7 +6,7 @@ Ce project est ma petite contribution en remerciement pour le starter Kit que j'
 
 Une fois installé cet assistant vous permettra d'avoir votre propre livre de recette intéractif à la cuisine!
 
-Une série de vidéo est dédié à ce project: (url playlist)
+Une série de vidéo est dédié à ce project: [Youtube playlist](https://www.youtube.com/playlist?list=PLO6q51Ysp78kkZyly_RQ5Bu_91IXSXprc)
 
 La vidéo concernant la programmation est ici: [Youtube partie 4](https://www.youtube.com/watch?v=V6pvFjn0Vt0)
 
@@ -23,7 +23,7 @@ This project is my little payback to thank Snips for the Starter kit they sent m
 
 Once installed, this assistant will offer you the power of an interactive recipe book directly in your kitchen!
 
-A serie of (french, EN subtitles to come) video dedicated to the project can be found here: (url playlist)
+A serie of (french, EN subtitles to come) video dedicated to the project can be found here: [Youtube playlist](https://www.youtube.com/playlist?list=PLO6q51Ysp78kkZyly_RQ5Bu_91IXSXprc)
 
 The video treating about this program is to be found here: [Youtube part 4](https://www.youtube.com/watch?v=V6pvFjn0Vt0)
 
