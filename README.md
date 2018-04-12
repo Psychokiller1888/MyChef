@@ -16,6 +16,8 @@ Comme tout project qui se respecte, une TODO list est prévue:
 - Ajout des ingrédients à une liste accessible
 - Support pour les équipements de cuisine intelligent (ex. pré chauffer le four)
 
+Pour les personnes qui auraient déjà un assistant configuré, j'ai publié le bundle, sur la console Snips, en Français pour que vous puissiez l'ajouter à votre assistant existant.
+
 
 ## Snips - Kitchen assistant
 
