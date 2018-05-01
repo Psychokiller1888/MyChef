@@ -48,8 +48,8 @@ Installation
 ```
 git clone https://github.com/Psychokiller1888/MyChef.git
 sudo rm -rf /usr/share/snips/assistant
-sudo mv mychef/assistant /usr/share/snips/assistant
-sudo mv mychef/mychef.service /etc/systemd/system
+sudo mv MyChef/assistant /usr/share/snips/assistant
+sudo mv MyChef/mychef.service /etc/systemd/system
 sudo systemctl restart "snip*"
 sudo systemctl start mychef
 sudo systemctl enable mychef
