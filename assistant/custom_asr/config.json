@@ -1,4 +1,11 @@
 {
+  "entityNameToFilename": {
+    "Recettes": "e_0.snips"
+  }, 
+  "injectionsEngine": {
+    "version": 1
+  }, 
+  "language": "fr", 
   "decoderConfig": {
     "useFinalProbs": true, 
     "latticeBeamSize": 1.0, 
@@ -7,11 +14,12 @@
     "acousticScale": 0.83, 
     "beamSize": 10.0
   }, 
+  "cacheSizeDynamic": 536870912, 
   "asrModel": {
     "version": "0.1.0"
   }, 
   "asrLmAdaptation": {
-    "version": "0.7.4"
+    "version": "0.9.0"
   }, 
   "endpointingRules": {
     "rule3": {
@@ -21,7 +29,7 @@
       "mustContainNonsilence": true
     }, 
     "rule2": {
-      "maxRelativeCost": 3.5, 
+      "maxRelativeCost": 7.5, 
       "minTrailingSilence": 0.5, 
       "minUtteranceLength": 0.0, 
       "mustContainNonsilence": true
@@ -48,30 +56,37 @@
   "postprocessors": [
     {
       "Regex": {
-        "pattern": "`Recettes`START .[^`]*? `Recettes`DECOY`EMPTY `Recettes`END", 
+        "pattern": "`551fd1c1-8107-463e-8710-9f1ce935dace`START .[^`]*? `551fd1c1-8107-463e-8710-9f1ce935dace`DECOY`EMPTY `551fd1c1-8107-463e-8710-9f1ce935dace`END", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`Recettes`START .[^`]*? `Recettes`DECOY`INSIDE .*? `Recettes`END`DECOY `Recettes`END", 
+        "pattern": "`551fd1c1-8107-463e-8710-9f1ce935dace`START .[^`]*? `551fd1c1-8107-463e-8710-9f1ce935dace`DECOY`INSIDE .*? `551fd1c1-8107-463e-8710-9f1ce935dace`END`DECOY `551fd1c1-8107-463e-8710-9f1ce935dace`END", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`Recettes`START`DECOY (.*?) `Recettes`END`DECOY", 
+        "pattern": "`551fd1c1-8107-463e-8710-9f1ce935dace`START`DECOY (.*?) `551fd1c1-8107-463e-8710-9f1ce935dace`END`DECOY", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`Recettes`START (.*?) `Recettes`END", 
+        "pattern": "`551fd1c1-8107-463e-8710-9f1ce935dace`START (.*?) `551fd1c1-8107-463e-8710-9f1ce935dace`END", 
         "flags": "i", 
         "replacement": "$1"
+      }
+    }, 
+    {
+      "Regex": {
+        "pattern": "`551fd1c1-8107-463e-8710-9f1ce935dace`START ", 
+        "flags": "i", 
+        "replacement": ""
       }
     }, 
     {
@@ -84,5 +99,25 @@
   ], 
   "asrEngine": {
     "version": "0.1.0"
+  }, 
+  "entitiesFstMap": [
+    [
+      181, 
+      "__root__"
+    ], 
+    [
+      182, 
+      "e_0.snips"
+    ]
+  ], 
+  "entityNameToDisambigs": {
+    "Recettes": {
+      "start": "`551fd1c1-8107-463e-8710-9f1ce935dace`START", 
+      "end": "`551fd1c1-8107-463e-8710-9f1ce935dace`END", 
+      "empty": [
+        "`551fd1c1-8107-463e-8710-9f1ce935dace`DECOY`EMPTY", 
+        2
+      ]
+    }
   }
 }
