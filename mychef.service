@@ -5,7 +5,7 @@ After=mosquitto.service snips-dialogue.service snips-hotword.service snips-asr.s
 
 [Service]
 ExecStart=/usr/bin/python main.py
-WorkingDirectory=/home/pi/mychef
+WorkingDirectory=/home/pi/MyChef
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
