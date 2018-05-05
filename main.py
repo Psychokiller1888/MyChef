@@ -162,14 +162,14 @@ def onMessage(client, userData, message):
 			for ingredient in recipe['ingredients']:
 				ingredients += u"{}. ".format(ingredient)
 
-			endTalk(sessionId, text=u"Pour préparer la recette {} il faudra les ingrédients suivant: {}".format(recipe['name'], ingredients))
+			endTalk(sessionId, text=lang['neededIngredients'].format(recipe['name'], ingredients))
 
 	elif intent == PREVIOUS_STEP:
 		if recipe is None:
 			endTalk(sessionId, text=lang['sorryNoRecipeOpen'])
 		else:
 			if currentStep <= 1:
-				endTalk(sessionId, text="Il n'y a pas d'étape précédante")
+				endTalk(sessionId, text=lang['noPreviousStep'])
 			else:
 				currentStep -= 1
 				step = recipe['steps'][str(currentStep)]
@@ -181,39 +181,39 @@ def onMessage(client, userData, message):
 					timer = step['timer']
 					step = step['text']
 
-				endTalk(sessionId, text=u"L'étape précédente était: {}".format(step))
+				endTalk(sessionId, text=lang['previousStepWas'].format(step))
 				if ask:
-					say(text=u"Cette étape comportait un minuteur de {} secondes. Tu peux me demander de minuter si tu es prêt".format(timer))
+					say(text=lang['hadTimerAsk'].format(timer))
 
 	elif intent == REPEAT_STEP:
 		if recipe is None:
 			endTalk(sessionId, text=lang['sorryNoRecipeOpen'])
 		else:
 			if currentStep <= 1:
-				endTalk(sessionId, text="Je n'ai rien a répéter, on a même pas commencé!")
+				endTalk(sessionId, text=lang['nothingToSayNotStarted'])
 			else:
 				step = recipe['steps'][str(currentStep)]
-				endTalk(sessionId, text=u"L'étape était: {}".format(step))
+				endTalk(sessionId, text=lang['repeatStep'].format(step))
 
 	elif intent == ACTIVATE_TIMER:
 		if recipe is None:
-			endTalk(sessionId, text=u"Minuteur? On a pas encore de recette!")
+			endTalk(sessionId, text=lang['noTimerNotStarted'])
 		else:
 			step = recipe['steps'][str(currentStep)]
 
 			if type(step) is not dict:
-				endTalk(sessionId, text=u"Il n'y a pas de minuteur pour cette étape")
+				endTalk(sessionId, text=lang['notTimerForThisStep'])
 			elif currentStep in timers:
-				endTalk(sessionId, text=u"Un minuteur est déjà démarré pour cette étape")
+				endTalk(sessionId, text=lang['timerAlreadyRunning'])
 			else:
 				timer = Timer(int(step['timer']), onTimeUp, args=[currentStep, step])
 				timer.start()
 				timers[currentStep] = timer
-				endTalk(sessionId, text=u"Ok! Minuteur pour cette étape démarré!")
+				endTalk(sessionId, text=lang['timerConfirm'])
 
 
 def error(sessionId):
-	endTalk(sessionId, "Désolé, mais il y a eu une erreur")
+	endTalk(sessionId, lang['error'])
 
 def endTalk(sessionId, text):
 	mqttClient.publish('hermes/dialogueManager/endSession', json.dumps({
@@ -234,7 +234,7 @@ def onTimeUp(*args, **kwargs):
 	wasStep = args[0]
 	step = args[1]
 	del timers[wasStep]
-	say(text=u'Un minuteur est arrivé à terme: {}'.format(step['textAfterTimer']))
+	say(text=lang['timerEnd'].format(step['textAfterTimer']))
 
 
 mqttClient = None
@@ -262,7 +262,7 @@ if __name__ == '__main__':
 		file.close()
 		lang = json.loads(string)
 	except:
-		logger.error("Error loading language file, exiting")
+		logger.error('Error loading language file, exiting')
 		sys.exit(0)
 
 	mqttClient = mqtt.Client()
