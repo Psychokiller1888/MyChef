@@ -3,21 +3,34 @@
 
 ## Made by Psycho - 2018 ##
 
+import settings
+
 import codecs
 import json
 import os
 import paho.mqtt.client as mqtt
 import paho.mqtt.publish as mqttPublish
-import pixels
+if settings.USE_LEDS:
+	import pixels
+import sys
 from threading import Timer
 import time
 
-OUVRIR_RECETTE 				= 'hermes/intent/Psychokiller1888:ouvrirRecette'
-ETAPE_SUIVANTE 				= 'hermes/intent/Psychokiller1888:etapeSuivante'
+import logging
+
+logging.basicConfig(
+	format='%(asctime)s [%(threadName)s] - [%(levelname)s] - %(message)s',
+	level=logging.INFO,
+	filename='logs.log',
+	filemode='w'
+)
+
+OPEN_RECIPE 				= 'hermes/intent/Psychokiller1888:ouvrirRecette'
+NEXT_STEP 					= 'hermes/intent/Psychokiller1888:etapeSuivante'
 INGREDIENTS 				= 'hermes/intent/Psychokiller1888:ingredients'
-ETAPE_PRECEDENTE 			= 'hermes/intent/Psychokiller1888:etapePrecedente'
-REPETER_ETAPE 				= 'hermes/intent/Psychokiller1888:repeterEtape'
-ACTIVER_MINUTEUR 			= 'hermes/intent/Psychokiller1888:activerMinuteur'
+PREVIOUS_STEP 				= 'hermes/intent/Psychokiller1888:etapePrecedente'
+REPEAT_STEP 				= 'hermes/intent/Psychokiller1888:repeterEtape'
+ACTIVATE_TIMER 				= 'hermes/intent/Psychokiller1888:activerMinuteur'
 
 HERMES_ON_HOTWORD 			= 'hermes/hotword/default/detected'
 HERMES_START_LISTENING 		= 'hermes/asr/startListening'
@@ -26,12 +39,12 @@ HERMES_CAPTURED 			= 'hermes/asr/textCaptured'
 HERMES_HOTWORD_TOGGLE_ON 	= 'hermes/hotword/toggleOn'
 
 def onConnect(client, userData, flags, rc):
-	mqttClient.subscribe(OUVRIR_RECETTE)
-	mqttClient.subscribe(ETAPE_SUIVANTE)
+	mqttClient.subscribe(OPEN_RECIPE)
+	mqttClient.subscribe(NEXT_STEP)
 	mqttClient.subscribe(INGREDIENTS)
-	mqttClient.subscribe(ETAPE_PRECEDENTE)
-	mqttClient.subscribe(REPETER_ETAPE)
-	mqttClient.subscribe(ACTIVER_MINUTEUR)
+	mqttClient.subscribe(PREVIOUS_STEP)
+	mqttClient.subscribe(REPEAT_STEP)
+	mqttClient.subscribe(ACTIVATE_TIMER)
 
 	mqttClient.subscribe(HERMES_ON_HOTWORD)
 	mqttClient.subscribe(HERMES_START_LISTENING)
@@ -41,26 +54,33 @@ def onConnect(client, userData, flags, rc):
 	mqttPublish.single('hermes/feedback/sound/toggleOn', payload=json.dumps({'siteId': 'default'}), hostname='127.0.0.1', port=1883)
 
 def onMessage(client, userData, message):
+	global lang
+
 	intent = message.topic
 
 	if intent == HERMES_ON_HOTWORD:
-		leds.wakeup()
+		if settings.USE_LEDS:
+			leds.wakeup()
 		return
 
 	elif intent == HERMES_SAY:
-		leds.speak()
+		if settings.USE_LEDS:
+			leds.speak()
 		return
 
 	elif intent == HERMES_CAPTURED:
-		leds.think()
+		if settings.USE_LEDS:
+			leds.think()
 		return
 
 	elif intent == HERMES_START_LISTENING:
-		leds.listen()
+		if settings.USE_LEDS:
+			leds.listen()
 		return
 
 	elif intent == HERMES_HOTWORD_TOGGLE_ON:
-		leds.off()
+		if settings.USE_LEDS:
+			leds.off()
 		return
 
 	global recipe, currentStep, timers, confirm
@@ -68,7 +88,7 @@ def onMessage(client, userData, message):
 	payload = json.loads(message.payload)
 	sessionId = payload['sessionId']
 
-	if intent == OUVRIR_RECETTE:
+	if intent == OPEN_RECIPE:
 		if 'slots' not in payload:
 			error(sessionId)
 			return
@@ -78,7 +98,7 @@ def onMessage(client, userData, message):
 		if recipe is not None and currentStep > 0:
 			if confirm <= 0:
 				confirm = 1
-				endTalk(sessionId, text="Nous avons déjà commencé une recette! Si j'en ouvre une autre, on ne pourra plus continuer sur celle-ci et tous les minuteurs seront annulés! Confirme ton intention en me demandant à nouveau d'ouvrir la recette!")
+				endTalk(sessionId, text=lang['warningRecipeAlreadyOpen'])
 				return
 			else:
 				for timer in timers:
@@ -88,11 +108,11 @@ def onMessage(client, userData, message):
 				confirm = 0
 				currentStep = 0
 
-		if os.path.isfile('./recettes/{}.json'.format(slotRecipeName.lower())):
-			endTalk(sessionId, text=u"Ok, j'ouvre la recette {}, un instant".format(payload['slots'][0]['rawValue']))
+		if os.path.isfile('./recipes/{}/{}.json'.format(settings.LANG, slotRecipeName.lower())):
+			endTalk(sessionId, text=lang['confirmOpening'].format(payload['slots'][0]['rawValue']))
 			currentStep = 0
 
-			file = codecs.open('./recettes/{}.json'.format(slotRecipeName.lower()), 'r', encoding='utf-8')
+			file = codecs.open('./recipes/{}/{}.json'.format(settings.LANG, slotRecipeName.lower()), 'r', encoding='utf-8')
 			string = file.read()
 			file.close()
 			recipe = json.loads(string)
@@ -100,10 +120,10 @@ def onMessage(client, userData, message):
 			time.sleep(2)
 
 			recipeName = recipe['name'] if 'phonetic' not in recipe else recipe['phonetic']
-			timeType = 'cuisson' if 'cookingTime' in recipe else 'repos'
-			cookOrWaitTime = recipe['cookingTime'] if timeType == 'cuisson' else recipe['waitTime']
+			timeType = lang['cookingTime'] if 'cookingTime' in recipe else lang['waitTime']
+			cookOrWaitTime = recipe['cookingTime'] if 'cookingTime' in recipe else recipe['waitTime']
 
-			say(text=u"La recette {} est une préparation {}, pour {} personnes, qui nécessite environ {} dont {} de préparation et {} de {}".format(
+			say(text=lang['recipePresentation'].format(
 				recipeName,
 				recipe['difficulty'],
 				recipe['person'],
@@ -113,14 +133,14 @@ def onMessage(client, userData, message):
 				timeType
 			))
 		else:
-			endTalk(sessionId, text=u"Je suis désolé mais je ne trouve pas cette recette")
+			endTalk(sessionId, text=lang['recipeNotFound'])
 
-	elif intent == ETAPE_SUIVANTE:
+	elif intent == NEXT_STEP:
 		if recipe is None:
-			endTalk(sessionId, text=u"Pardon, mais tu ne m'as pas demandé d'ouvrir une recette!")
+			endTalk(sessionId, text=lang['sorryNoRecipeOpen'])
 		else:
 			if str(currentStep + 1) not in recipe['steps']:
-				endTalk(sessionId, text="Nous sommes arrivé à la fin de la recette, il n'y a pas d'étape supplémentaire, si ce n'est déguster la préparation! Bon appetit!")
+				endTalk(sessionId, text=lang['recipeEnd'])
 			else:
 				currentStep += 1
 				step = recipe['steps'][str(currentStep)]
@@ -130,13 +150,13 @@ def onMessage(client, userData, message):
 					ask = True
 					step = step['text']
 
-				endTalk(sessionId, text=u"Voici la prochaine étape: {}".format(step))
+				endTalk(sessionId, text=lang['nextStep'].format(step))
 				if ask:
-					say(text="Cette étape comporte un minuteur. Tu peux me demander de minuter dès que tu seras prêt")
+					say(text=lang['timeAsk'])
 
 	elif intent == INGREDIENTS:
 		if recipe is None:
-			endTalk(sessionId, text=u"Pardon, mais tu ne m'as pas demandé d'ouvrir une recette!")
+			endTalk(sessionId, text=lang['sorryNoRecipeOpen'])
 		else:
 			ingredients = ''
 			for ingredient in recipe['ingredients']:
@@ -144,9 +164,9 @@ def onMessage(client, userData, message):
 
 			endTalk(sessionId, text=u"Pour préparer la recette {} il faudra les ingrédients suivant: {}".format(recipe['name'], ingredients))
 
-	elif intent == ETAPE_PRECEDENTE:
+	elif intent == PREVIOUS_STEP:
 		if recipe is None:
-			endTalk(sessionId, text=u"Pardon, mais tu ne m'as pas demandé d'ouvrir une recette!")
+			endTalk(sessionId, text=lang['sorryNoRecipeOpen'])
 		else:
 			if currentStep <= 1:
 				endTalk(sessionId, text="Il n'y a pas d'étape précédante")
@@ -165,9 +185,9 @@ def onMessage(client, userData, message):
 				if ask:
 					say(text=u"Cette étape comportait un minuteur de {} secondes. Tu peux me demander de minuter si tu es prêt".format(timer))
 
-	elif intent == REPETER_ETAPE:
+	elif intent == REPEAT_STEP:
 		if recipe is None:
-			endTalk(sessionId, text=u"Pardon, mais tu ne m'as pas demandé d'ouvrir une recette!")
+			endTalk(sessionId, text=lang['sorryNoRecipeOpen'])
 		else:
 			if currentStep <= 1:
 				endTalk(sessionId, text="Je n'ai rien a répéter, on a même pas commencé!")
@@ -175,7 +195,7 @@ def onMessage(client, userData, message):
 				step = recipe['steps'][str(currentStep)]
 				endTalk(sessionId, text=u"L'étape était: {}".format(step))
 
-	elif intent == ACTIVER_MINUTEUR:
+	elif intent == ACTIVATE_TIMER:
 		if recipe is None:
 			endTalk(sessionId, text=u"Minuteur? On a pas encore de recette!")
 		else:
@@ -224,16 +244,32 @@ recipe = None
 currentStep = 0
 timers = {}
 confirm = 0
+lang = ''
+
+logger = logging.getLogger('MyChef')
+logger.addHandler(logging.StreamHandler())
 
 if __name__ == '__main__':
-	print('Chargement...')
-	leds = pixels.Pixels()
-	leds.off()
+	logger.info('...My Chef...')
+
+	if settings.USE_LEDS:
+		leds = pixels.Pixels()
+		leds.off()
+
+	try:
+		file = codecs.open('./recipes/{}.json'.format(settings.LANG), 'r', encoding='utf-8')
+		string = file.read()
+		file.close()
+		lang = json.loads(string)
+	except:
+		logger.error("Error loading language file, exiting")
+		sys.exit(0)
+
 	mqttClient = mqtt.Client()
 	mqttClient.on_connect = onConnect
 	mqttClient.on_message = onMessage
 	mqttClient.connect('localhost', 1883)
-	print('Assistant de cuisine fonctionnel, chef!')
+	logger.info(lang['appReady'])
 	mqttClient.loop_start()
 	try:
 		while running:
@@ -243,4 +279,4 @@ if __name__ == '__main__':
 		mqttClient.disconnect()
 		running = False
 	finally:
-		print('Arret')
+		logger.info(lang['stopping'])

@@ -1,0 +1,14 @@
+{
+	"appReady": "Assistant de cuisine fonctionnel, chef!",
+  	"stopping": "Arrêt du programme",
+  	"warningRecipeAlreadyOpen": "Nous avons déjà commencé une recette! Si j'en ouvre une autre, on ne pourra plus continuer sur celle-ci et tous les minuteurs seront annulés! Confirme ton intention en me demandant à nouveau d'ouvrir la recette!",
+  	"confirmOpening": "Ok, j'ouvre la recette {}, un instant",
+  	"cookingTime": "cuisson",
+  	"waitTime": "repos",
+  	"recipePresentation": "La recette {} est une préparation {}, pour {} personnes, qui nécessite environ {} dont {} de préparation et {} de {}",
+  	"recipeNotFound": "Je suis désolé mais je ne trouve pas cette recette",
+  	"sorryNoRecipeOpen": "Pardon, mais tu ne m'as pas demandé d'ouvrir une recette!",
+  	"recipeEnd": "Nous sommes arrivé à la fin de la recette, il n'y a pas d'étape supplémentaire, si ce n'est déguster la préparation! Bon appetit!",
+  	"nextStep": "Voici la prochaine étape: {}",
+  	"timerAsk": "Cette étape comporte un minuteur. Tu peux me demander de minuter dès que tu seras prêt"
+}
