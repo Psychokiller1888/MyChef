@@ -257,7 +257,7 @@ if __name__ == '__main__':
 		leds.off()
 
 	try:
-		file = codecs.open('./recipes/{}.json'.format(settings.LANG), 'r', encoding='utf-8')
+		file = codecs.open('./languages/{}.json'.format(settings.LANG), 'r', encoding='utf-8')
 		string = file.read()
 		file.close()
 		lang = json.loads(string)
