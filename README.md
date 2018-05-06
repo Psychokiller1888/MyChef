@@ -12,7 +12,7 @@ La vidéo concernant la programmation est ici: [Youtube partie 4](https://www.yo
 
 Comme tout project qui se respecte, une TODO list est prévue:
 
-- Support mulilangue
+- Support mulilangue => en cours
 - Ajout des ingrédients à une liste accessible
 - Support pour les équipements de cuisine intelligent (ex. pré chauffer le four)
 
@@ -31,7 +31,7 @@ The video treating about this program is to be found here: [Youtube part 4](http
 
 As every respectable project, a TODO:
 
-- Multilang support
+- Multilang support => under work, english to be supported within the next days
 - Adding ingredients directly to an accessible list
 - Support intelligent kitchen devices (ex. pre heating oven)
 
