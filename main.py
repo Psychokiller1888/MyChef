@@ -25,12 +25,12 @@ logging.basicConfig(
 	filemode='w'
 )
 
-OPEN_RECIPE 				= 'hermes/intent/Psychokiller1888:ouvrirRecette'
-NEXT_STEP 					= 'hermes/intent/Psychokiller1888:etapeSuivante'
+OPEN_RECIPE 				= 'hermes/intent/Psychokiller1888:openRecipe'
+NEXT_STEP 					= 'hermes/intent/Psychokiller1888:nextStep'
 INGREDIENTS 				= 'hermes/intent/Psychokiller1888:ingredients'
-PREVIOUS_STEP 				= 'hermes/intent/Psychokiller1888:etapePrecedente'
-REPEAT_STEP 				= 'hermes/intent/Psychokiller1888:repeterEtape'
-ACTIVATE_TIMER 				= 'hermes/intent/Psychokiller1888:activerMinuteur'
+PREVIOUS_STEP 				= 'hermes/intent/Psychokiller1888:previousStep'
+REPEAT_STEP 				= 'hermes/intent/Psychokiller1888:repeatStep'
+ACTIVATE_TIMER 				= 'hermes/intent/Psychokiller1888:activateTimer'
 
 HERMES_ON_HOTWORD 			= 'hermes/hotword/default/detected'
 HERMES_START_LISTENING 		= 'hermes/asr/startListening'
@@ -268,7 +268,8 @@ if __name__ == '__main__':
 	mqttClient = mqtt.Client()
 	mqttClient.on_connect = onConnect
 	mqttClient.on_message = onMessage
-	mqttClient.connect('localhost', 1883)
+	#mqttClient.connect('localhost', 1883)
+	mqttClient.connect('iot.eclipse.org', 80)
 	logger.info(lang['appReady'])
 	mqttClient.loop_start()
 	try:

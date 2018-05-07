@@ -2,54 +2,53 @@
   "id" : "proj_9O5mxbVGvqQE",
   "name" : "Mon Chef de cuisine",
   "intents" : [ {
-    "id" : "Psychokiller1888:repeterEtape",
+    "id" : "Psychokiller1888:repeatStep",
     "type" : "registry",
-    "version" : "0.0.8",
+    "version" : "0.0.9",
     "language" : "fr",
     "slots" : [ ],
-    "name" : "repeterEtape"
+    "name" : "repeatStep"
   }, {
-    "id" : "Psychokiller1888:ouvrirRecette",
+    "id" : "Psychokiller1888:openRecipe",
     "type" : "registry",
-    "version" : "0.0.23",
+    "version" : "0.0.24",
     "language" : "fr",
     "slots" : [ {
       "name" : "recette",
       "id" : "Bkb-apNif",
-      "entity" : "",
       "entityId" : "entity_XrXemA8x1P4M",
       "missingQuestion" : "Quelle recette dois-je ouvrir?",
       "required" : true
     } ],
-    "name" : "ouvrirRecette"
+    "name" : "openRecipe"
   }, {
-    "id" : "Psychokiller1888:etapeSuivante",
-    "type" : "registry",
-    "version" : "0.0.5",
-    "language" : "fr",
-    "slots" : [ ],
-    "name" : "etapeSuivante"
-  }, {
-    "id" : "Psychokiller1888:ingredients",
+    "id" : "Psychokiller1888:nextStep",
     "type" : "registry",
     "version" : "0.0.6",
     "language" : "fr",
     "slots" : [ ],
-    "name" : "ingredients"
+    "name" : "nextStep"
   }, {
-    "id" : "Psychokiller1888:etapePrecedente",
-    "type" : "registry",
-    "version" : "0.0.8",
-    "language" : "fr",
-    "slots" : [ ],
-    "name" : "etapePrecedente"
-  }, {
-    "id" : "Psychokiller1888:activerMinuteur",
+    "id" : "Psychokiller1888:ingredients",
     "type" : "registry",
     "version" : "0.0.7",
     "language" : "fr",
     "slots" : [ ],
-    "name" : "activerMinuteur"
+    "name" : "ingredients"
+  }, {
+    "id" : "Psychokiller1888:previousStep",
+    "type" : "registry",
+    "version" : "0.0.9",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "previousStep"
+  }, {
+    "id" : "Psychokiller1888:activateTimer",
+    "type" : "registry",
+    "version" : "0.0.8",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "activateTimer"
   } ],
   "createdAt" : "2018-04-06T10:29:04.093Z",
   "language" : "fr",
