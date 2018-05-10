@@ -1,0 +1,67 @@
+{
+  "id" : "proj_9O5mxbVGvqQE",
+  "name" : "Mon Chef de cuisine",
+  "intents" : [ {
+    "id" : "Psychokiller1888:repeatStep",
+    "type" : "registry",
+    "version" : "0.0.11",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "repeatStep"
+  }, {
+    "id" : "Psychokiller1888:openRecipe",
+    "type" : "registry",
+    "version" : "0.0.25",
+    "language" : "fr",
+    "slots" : [ {
+      "name" : "recette",
+      "id" : "Bkb-apNif",
+      "entityId" : "entity_XrXemA8x1P4M",
+      "missingQuestion" : "Quelle recette dois-je ouvrir?",
+      "required" : true
+    } ],
+    "name" : "openRecipe"
+  }, {
+    "id" : "Psychokiller1888:nextStep",
+    "type" : "registry",
+    "version" : "0.0.7",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "nextStep"
+  }, {
+    "id" : "Psychokiller1888:ingredients",
+    "type" : "registry",
+    "version" : "0.0.8",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "ingredients"
+  }, {
+    "id" : "Psychokiller1888:previousStep",
+    "type" : "registry",
+    "version" : "0.0.10",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "previousStep"
+  }, {
+    "id" : "Psychokiller1888:activateTimer",
+    "type" : "registry",
+    "version" : "0.0.9",
+    "language" : "fr",
+    "slots" : [ ],
+    "name" : "activateTimer"
+  } ],
+  "createdAt" : "2018-04-06T10:29:04.093Z",
+  "language" : "fr",
+  "version" : {
+    "nluModel" : "0.14.0"
+  },
+  "platform" : {
+    "type" : "raspberrypi"
+  },
+  "asr" : {
+    "type" : "snips"
+  },
+  "analyticsEnabled" : true,
+  "heartbeatEnabled" : true,
+  "hotword" : "hey_snips"
+}
