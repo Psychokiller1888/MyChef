@@ -1,0 +1,25 @@
+{
+	"categories": [
+		"Breakfast"
+	],
+	"name": "Crepe",
+	"person": 4,
+	"difficulty": "easy",
+	"preparationTime": "10 minutes",
+	"cookingTime": "15 minutes",
+	"totalTime": "25 minutes",
+	"ingredients": [
+		"2 cups all purpose flour",
+		"4 eggs",
+		"2 cups milk",
+		"A forth of a teaspoon salt",
+	  	"2 tablespoons sugar",
+		"A forth of a cup butter, melted"
+	],
+	"steps": {
+		"1": "In a large mixing bowl, whisk together the flour and the eggs. Gradually add in the milk, stirring to combine. Add the salt and butter, beat until smooth.",
+		"2": "Heat a lightly oiled griddle or frying pan over medium high heat. Pour or scoop the butter onto the griddle, using approximately one forth of a cup for each crepe. Tilt the pan with a circular motion so that the butter coats the surface evenly.",
+		"3": "Cook the crepe for about 2 minutes, until the bottom is light brown. Loosen with a spatula, turn and cook the other side.",
+		"4": "Repeat until you're out of preparation"
+	}
+}

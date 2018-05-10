@@ -1,0 +1,27 @@
+{
+	"categories": [
+		"Salade",
+		"Entrée",
+		"Méditerranéen"
+	],
+	"name": "Salade Grecque",
+	"person": 4,
+	"difficulty": "facile",
+	"preparationTime": "5 minutes",
+	"cookingTime": "aucun temps",
+	"totalTime": "5 minutes",
+	"ingredients": [
+		"1 concombre",
+		"4 tomates",
+		"1 oignon rouge",
+		"200 grammes de feta",
+		"olives (noires ou vertes)",
+		"câpres",
+		"huile d'olive"
+	],
+	"steps": {
+		"1": "Détaillez le concombre (pelé, et épépiné si possible) et les tomates en quartiers moyens. Emincez l'oignon en petites rondelles. Répartissez le tout dans des assiettes creuses ou de larges bols.",
+		"2": "Coupez la feta en 4, puis coupez chaque morceau dans le sens de la longueur pour des tranches plus fines.",
+		"3": "Arrosez d'un petit filet d'huile d'olive, poivrez légèrement (ne salez pas). Parsemez de quelques olives et de câpres. Servez frais."
+	}
+}
