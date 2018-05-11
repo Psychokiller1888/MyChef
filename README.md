@@ -53,7 +53,7 @@ FRENCH
 ENGLISH
  * sudo mv MyChef/assistants/assistant_en /usr/share/snips/assistant
  * cd MyChef
- * sudo nano settings.py => change 'LANG' = 'en'
+ * sudo nano settings.py => change LANG = 'en'
 
 sudo systemctl restart "snips-*"
 sudo systemctl start mychef
