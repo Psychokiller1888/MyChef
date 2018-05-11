@@ -268,8 +268,7 @@ if __name__ == '__main__':
 	mqttClient = mqtt.Client()
 	mqttClient.on_connect = onConnect
 	mqttClient.on_message = onMessage
-	#mqttClient.connect('localhost', 1883)
-	mqttClient.connect('iot.eclipse.org', 80)
+	mqttClient.connect('localhost', 1883)
 	logger.info(lang['appReady'])
 	mqttClient.loop_start()
 	try:
