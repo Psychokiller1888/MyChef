@@ -50,7 +50,7 @@ sudo rm -rf /usr/share/snips/assistant
 FRENCH
  - sudo mv MyChef/assistants/assistant_fr /usr/share/snips/assistant
 ENGLISH
- - to come, solving an issue
+ - sudo mv MyChef/assistants/assistant_en /usr/share/snips/assistant
 sudo mv MyChef/mychef.service /etc/systemd/system
 sudo systemctl restart "snips-*"
 sudo systemctl start mychef
