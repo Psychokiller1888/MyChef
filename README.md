@@ -15,7 +15,7 @@ Comme tout project qui se respecte, une TODO list est prévue:
 - Ajout des ingrédients à une liste accessible
 - Support pour les équipements de cuisine intelligent (ex. pré chauffer le four)
 
-Pour les personnes qui auraient déjà un assistant configuré, j'ai publié le bundle, sur la console Snips, en Français pour que vous puissiez l'ajouter à votre assistant existant.
+Pour les personnes qui auraient déjà un assistant configuré, j'ai publié le skill, sur la console Snips, en Français pour que vous puissiez l'ajouter à votre assistant existant.
 
 
 ## Snips - Kitchen assistant
@@ -33,6 +33,7 @@ As every respectable project, a TODO:
 - Adding ingredients directly to an accessible list
 - Support intelligent kitchen devices (ex. pre heating oven)
 
+For people already having a running assistant, I have published the whole skill on snips, in english, for you to add it to your own assistant.
 
 ### Installation
 
