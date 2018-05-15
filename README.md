@@ -59,3 +59,8 @@ sudo systemctl restart "snips-*"
 sudo systemctl start mychef
 sudo systemctl enable mychef
 ```
+
+
+![cmdfr](https://puu.sh/Amr85.png)
+
+![cmdsen](https://puu.sh/Amr4S.png)
