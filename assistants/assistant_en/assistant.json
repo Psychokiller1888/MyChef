@@ -4,35 +4,35 @@
   "intents" : [ {
     "id" : "Psychokiller1888:repeatStep",
     "type" : "registry",
-    "version" : "0.0.2",
+    "version" : "0.0.3",
     "language" : "en",
     "slots" : [ ],
     "name" : "repeatStep"
   }, {
     "id" : "Psychokiller1888:nextStep",
     "type" : "registry",
-    "version" : "0.0.5",
+    "version" : "0.0.6",
     "language" : "en",
     "slots" : [ ],
     "name" : "nextStep"
   }, {
     "id" : "Psychokiller1888:ingredients",
     "type" : "registry",
-    "version" : "0.0.2",
+    "version" : "0.0.4",
     "language" : "en",
     "slots" : [ ],
     "name" : "ingredients"
   }, {
     "id" : "Psychokiller1888:previousStep",
     "type" : "registry",
-    "version" : "0.0.4",
+    "version" : "0.0.5",
     "language" : "en",
     "slots" : [ ],
     "name" : "previousStep"
   }, {
     "id" : "Psychokiller1888:openRecipe",
     "type" : "registry",
-    "version" : "0.0.7",
+    "version" : "0.0.8",
     "language" : "en",
     "slots" : [ {
       "name" : "recette",
@@ -45,7 +45,7 @@
   }, {
     "id" : "Psychokiller1888:activateTimer",
     "type" : "registry",
-    "version" : "0.0.5",
+    "version" : "0.0.6",
     "language" : "en",
     "slots" : [ ],
     "name" : "activateTimer"
@@ -53,7 +53,7 @@
   "createdAt" : "2018-05-06T08:34:46.115Z",
   "language" : "en",
   "version" : {
-    "nluModel" : "0.14.0"
+    "nluModel" : "0.15.0"
   },
   "platform" : {
     "type" : "raspberrypi"
