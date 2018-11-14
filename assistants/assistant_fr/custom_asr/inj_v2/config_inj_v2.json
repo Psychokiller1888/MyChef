@@ -1,0 +1,9 @@
+{
+    "Recettes": {
+        "vanilla": "0b4c0e5e-a85c-4328-b88a-5462e21beaef.vanilla", 
+        "added": "0b4c0e5e-a85c-4328-b88a-5462e21beaef.added", 
+        "pruningThresholds": [], 
+        "ngram": true, 
+        "order": 3
+    }
+}

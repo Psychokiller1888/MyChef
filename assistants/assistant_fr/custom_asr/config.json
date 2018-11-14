@@ -3,23 +3,28 @@
     "Recettes": "e_0.snips"
   }, 
   "injectionsEngine": {
-    "version": 1
+    "version": 2
   }, 
   "language": "fr", 
   "decoderConfig": {
     "useFinalProbs": true, 
-    "latticeBeamSize": 1.0, 
-    "maxActive": 2000, 
+    "latticeBeamSize": 4.0, 
+    "mbrConfig": {
+      "confidenceAdditionnalExponent": 1.0, 
+      "unkProba": 0.5, 
+      "unkThreshold": 0.3
+    }, 
+    "maxActive": 2500, 
     "minActive": 200, 
     "acousticScale": 0.83, 
-    "beamSize": 10.0
+    "beamSize": 12.0
   }, 
   "cacheSizeDynamic": 536870912, 
   "asrModel": {
     "version": "0.1.0"
   }, 
   "asrLmAdaptation": {
-    "version": "0.9.2"
+    "version": "0.16.2"
   }, 
   "endpointingRules": {
     "rule3": {
@@ -29,8 +34,8 @@
       "mustContainNonsilence": true
     }, 
     "rule2": {
-      "maxRelativeCost": 7.5, 
-      "minTrailingSilence": 0.5, 
+      "maxRelativeCost": 5.5, 
+      "minTrailingSilence": 0.7, 
       "minUtteranceLength": 0.0, 
       "mustContainNonsilence": true
     }, 
@@ -47,8 +52,8 @@
       "mustContainNonsilence": false
     }, 
     "rule4": {
-      "maxRelativeCost": 10000000000.0, 
-      "minTrailingSilence": 2.0, 
+      "maxRelativeCost": 2.5, 
+      "minTrailingSilence": 0.5, 
       "minUtteranceLength": 0.0, 
       "mustContainNonsilence": true
     }
@@ -56,35 +61,35 @@
   "postprocessors": [
     {
       "Regex": {
-        "pattern": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`START .[^`]*? `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`DECOY`EMPTY `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`END", 
+        "pattern": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`START .[^`]*? `0b4c0e5e-a85c-4328-b88a-5462e21beaef`DECOY`EMPTY `0b4c0e5e-a85c-4328-b88a-5462e21beaef`END", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`START .[^`]*? `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`DECOY`INSIDE .*? `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`END`DECOY `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`END", 
+        "pattern": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`START .[^`]*? `0b4c0e5e-a85c-4328-b88a-5462e21beaef`DECOY`INSIDE .*? `0b4c0e5e-a85c-4328-b88a-5462e21beaef`END`DECOY `0b4c0e5e-a85c-4328-b88a-5462e21beaef`END", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`START`DECOY (.*?) `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`END`DECOY", 
+        "pattern": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`START`DECOY (.*?) `0b4c0e5e-a85c-4328-b88a-5462e21beaef`END`DECOY", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`START (.*?) `1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`END", 
+        "pattern": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`START (.*?) `0b4c0e5e-a85c-4328-b88a-5462e21beaef`END", 
         "flags": "i", 
         "replacement": "$1"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`START ", 
+        "pattern": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`START ", 
         "flags": "i", 
         "replacement": ""
       }
@@ -102,22 +107,25 @@
   }, 
   "entitiesFstMap": [
     [
-      181, 
+      185, 
       "__root__"
     ], 
     [
-      182, 
+      186, 
       "e_0.snips"
     ]
   ], 
   "entityNameToDisambigs": {
     "Recettes": {
-      "start": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`START", 
-      "end": "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`END", 
+      "start": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`START", 
+      "end": "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`END", 
       "empty": [
-        "`1d8ba38d-c44c-4c24-8d5c-be7e5a1668b5`DECOY`EMPTY", 
+        "`0b4c0e5e-a85c-4328-b88a-5462e21beaef`DECOY`EMPTY", 
         2
       ]
     }
+  }, 
+  "inferenceEngine": {
+    "version": 2
   }
 }

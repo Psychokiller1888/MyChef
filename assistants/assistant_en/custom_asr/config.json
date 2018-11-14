@@ -3,23 +3,28 @@
     "Recipe": "e_0.snips"
   }, 
   "injectionsEngine": {
-    "version": 1
+    "version": 2
   }, 
   "language": "en", 
   "decoderConfig": {
     "useFinalProbs": true, 
-    "latticeBeamSize": 1.0, 
-    "maxActive": 2000, 
+    "latticeBeamSize": 4.0, 
+    "mbrConfig": {
+      "confidenceAdditionnalExponent": 1.0, 
+      "unkProba": 0.5, 
+      "unkThreshold": 0.3
+    }, 
+    "maxActive": 2500, 
     "minActive": 200, 
     "acousticScale": 0.83, 
-    "beamSize": 10.0
+    "beamSize": 12.0
   }, 
   "cacheSizeDynamic": 536870912, 
   "asrModel": {
     "version": "0.1.0"
   }, 
   "asrLmAdaptation": {
-    "version": "0.9.2"
+    "version": "0.16.2"
   }, 
   "endpointingRules": {
     "rule3": {
@@ -29,8 +34,8 @@
       "mustContainNonsilence": true
     }, 
     "rule2": {
-      "maxRelativeCost": 3.5, 
-      "minTrailingSilence": 0.5, 
+      "maxRelativeCost": 5.5, 
+      "minTrailingSilence": 0.7, 
       "minUtteranceLength": 0.0, 
       "mustContainNonsilence": true
     }, 
@@ -47,8 +52,8 @@
       "mustContainNonsilence": false
     }, 
     "rule4": {
-      "maxRelativeCost": 10000000000.0, 
-      "minTrailingSilence": 2.0, 
+      "maxRelativeCost": 2.5, 
+      "minTrailingSilence": 0.5, 
       "minUtteranceLength": 0.0, 
       "mustContainNonsilence": true
     }
@@ -56,35 +61,35 @@
   "postprocessors": [
     {
       "Regex": {
-        "pattern": "`073dfb13-1414-454c-a137-48df1ed15815`START .[^`]*? `073dfb13-1414-454c-a137-48df1ed15815`DECOY`EMPTY `073dfb13-1414-454c-a137-48df1ed15815`END", 
+        "pattern": "`94c64048-2141-469e-986a-155173175c1b`START .[^`]*? `94c64048-2141-469e-986a-155173175c1b`DECOY`EMPTY `94c64048-2141-469e-986a-155173175c1b`END", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`073dfb13-1414-454c-a137-48df1ed15815`START .[^`]*? `073dfb13-1414-454c-a137-48df1ed15815`DECOY`INSIDE .*? `073dfb13-1414-454c-a137-48df1ed15815`END`DECOY `073dfb13-1414-454c-a137-48df1ed15815`END", 
+        "pattern": "`94c64048-2141-469e-986a-155173175c1b`START .[^`]*? `94c64048-2141-469e-986a-155173175c1b`DECOY`INSIDE .*? `94c64048-2141-469e-986a-155173175c1b`END`DECOY `94c64048-2141-469e-986a-155173175c1b`END", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`073dfb13-1414-454c-a137-48df1ed15815`START`DECOY (.*?) `073dfb13-1414-454c-a137-48df1ed15815`END`DECOY", 
+        "pattern": "`94c64048-2141-469e-986a-155173175c1b`START`DECOY (.*?) `94c64048-2141-469e-986a-155173175c1b`END`DECOY", 
         "flags": "i", 
         "replacement": "unknownword"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`073dfb13-1414-454c-a137-48df1ed15815`START (.*?) `073dfb13-1414-454c-a137-48df1ed15815`END", 
+        "pattern": "`94c64048-2141-469e-986a-155173175c1b`START (.*?) `94c64048-2141-469e-986a-155173175c1b`END", 
         "flags": "i", 
         "replacement": "$1"
       }
     }, 
     {
       "Regex": {
-        "pattern": "`073dfb13-1414-454c-a137-48df1ed15815`START ", 
+        "pattern": "`94c64048-2141-469e-986a-155173175c1b`START ", 
         "flags": "i", 
         "replacement": ""
       }
@@ -112,12 +117,15 @@
   ], 
   "entityNameToDisambigs": {
     "Recipe": {
-      "start": "`073dfb13-1414-454c-a137-48df1ed15815`START", 
-      "end": "`073dfb13-1414-454c-a137-48df1ed15815`END", 
+      "start": "`94c64048-2141-469e-986a-155173175c1b`START", 
+      "end": "`94c64048-2141-469e-986a-155173175c1b`END", 
       "empty": [
-        "`073dfb13-1414-454c-a137-48df1ed15815`DECOY`EMPTY", 
+        "`94c64048-2141-469e-986a-155173175c1b`DECOY`EMPTY", 
         4
       ]
     }
+  }, 
+  "inferenceEngine": {
+    "version": 2
   }
 }
